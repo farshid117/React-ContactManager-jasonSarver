@@ -16,5 +16,6 @@ const ContactContext = createContext({
     updateContact: () => {},
     createContact: () => {},
     onContactSearch: () => {},
+    onSubmitSearch: () => {},
 })
 export default ContactContext ;

@@ -12,3 +12,7 @@
   background-position: left 0.75rem center;
   padding: 0.375rem 0.75rem;
 }
+
+::-webkit-scrollbar {
+  display: none !important;
+}

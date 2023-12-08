@@ -13,7 +13,7 @@ import produce from "immer";
 import { ToastContainer, toast } from "react-toastify";
 
 import {
-  Navbar,
+  NavbarContact,
   Contacts,
   AddContact,
   ViewContact,
@@ -188,6 +188,15 @@ const App = () => {
       setSearchParams({});
     }
   }, 1000);
+  const onSubmitSearch = (event) => {
+    event.preventDefault()
+    let filter = event.target.value;
+    if (filter) {
+      setSearchParams({ filter: filter });
+    } else {
+      setSearchParams({});
+    }
+  };
 
   //todo: return JSX
   return (
@@ -199,6 +208,7 @@ const App = () => {
         setContacts,
         groups,
         searchParams,
+        onSubmitSearch,
         //errors,
         //setErrors ,
 
@@ -208,7 +218,7 @@ const App = () => {
       }}>
       <div className='App'>
         <ToastContainer rtl={true} />
-        <Navbar />
+        <NavbarContact />
         <Routes>
           <Route path='/' element={<Navigate to='/contacts' />} /> {/*move to <contact /> without re-rendering  */}
           <Route path='/contacts' element={<Contacts />} />

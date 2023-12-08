@@ -9,6 +9,8 @@
 
 body{
      font-family:'Vazir','tahoma','ubuntu' ;
+     -ms-overflow-style: none !important;
+     scrollbar-width: none !important;
 }
 .Toastify__toast-body {
     font-family : 'Vazir' , Tahoma !important ;

@@ -7,6 +7,6 @@ export {default as SearchContact } from "./contacts/SearchContact"
 export {default as ViewContact } from "./contacts/ViewContact"
 
 /**  othe Components */
-export {default as Navbar } from "./Navbar"
+export {default as NavbarContact } from "./NavbarContact"
 export {default as Contacts } from "./Contacts"
 export {default as Spinner } from "./Spinner"

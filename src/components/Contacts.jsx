@@ -5,13 +5,15 @@ import { Link } from "react-router-dom";
 import { Spinner, Contact } from "./";
 import ContactContext from "./../context/ContactContext";
 
+import "./Contacts.css"
+
 const Contacts = () => {
   const { contacts, loading, deleteContact, searchParams } = useContext(ContactContext);
 
   return (
     <>
-      <h3 className='mt-3 px-3 text-center'>سامانه آنلاین صدور و استعلام بیمه نامه</h3>
-      <h6 className="text-center">شرکت بیمه را به منزل ببرید</h6>
+      <h3 className='px-3 text-center' style={{marginTop:100}}>سیستم مدیریت مخاطبین</h3>
+      <h6 className="text-center">با قابلیت جستجو</h6>
       <section className='' id='contactsHeader'>
         <div className='container'>
           <div className='row'>
@@ -32,8 +34,9 @@ const Contacts = () => {
                 ) : (
                   <Link
                     to='/contacts/add'
-                    className='btn rounded-1'
-                    style={{ background: "red", color: "whitesmoke" }}>
+                    className='btn rounded-2'
+                    style={{ background: "red", color: "whitesmoke", display: "flex", alignItems:"center" }}
+                  >
                     ساخت شخص جدید
                     <span
                       className='fas fa-plus-circle  mx-2'
