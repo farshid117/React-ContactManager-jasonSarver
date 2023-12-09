@@ -12,9 +12,9 @@ const Contacts = () => {
 
   return (
     <>
-      <h3 className='px-3 text-center' style={{marginTop:100}}>سیستم مدیریت مخاطبین</h3>
-      <h6 className="text-center">با قابلیت جستجو</h6>
-      <section className='' id='contactsHeader'>
+      <h3 className='px-3 text-center' style={{ marginTop: 100 }}>سیستم مدیریت مخاطبین</h3>
+      <h6 className="text-center text-danger mt-2">با قابلیت جستجو😎</h6>
+      <section id='contactsHeader'>
         <div className='container'>
           <div className='row'>
             <div className='col d-flex justify-content-center justify-content-lg-start mt-2 mt-lg-3'>
@@ -35,7 +35,7 @@ const Contacts = () => {
                   <Link
                     to='/contacts/add'
                     className='btn rounded-2'
-                    style={{ background: "red", color: "whitesmoke", display: "flex", alignItems:"center" }}
+                    style={{ background: "red", color: "whitesmoke", display: "flex", alignItems: "center" }}
                   >
                     ساخت شخص جدید
                     <span
@@ -57,25 +57,25 @@ const Contacts = () => {
           <div className='container'>
             <div className='row justify-content-evenly w-100 mx-0 '>
               {/* todo put{} becouse we want to return something */}
-              {contacts
-                .filter((contact) => {
-                  let filter = searchParams.get("filter");
-                  if (!filter) return true;
-                  return contact.fullname
-                    .toLowerCase()
-                    .includes(filter.toLowerCase());
-                })
-                .map((contact, index) => (
-                  <Contact
-                    key={index}
-                    contact={contact}
-                    deleteContact={() =>
-                      deleteContact(contact.id, contact.fullname)
-                    }
-                  />
-                ))}
+              {
+                contacts
+                  .filter((contact) => {
+                    let filter = searchParams.get("filter");
+                    if (!filter) return true;
+                    return contact.fullname
+                      .toLowerCase()
+                      .includes(filter.toLowerCase()); //return array
+                  })
+                  .map((contact) => (
+                    <Contact
+                      key={contact.id}
+                      {...contact}
+                      deleteContact={deleteContact}
+                    />
+                  ))
+              }
             </div>
-          </div>
+          </div> 
         </section>
       )}
     </>

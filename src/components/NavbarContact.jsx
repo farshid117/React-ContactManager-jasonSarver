@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 
 import { SearchContact } from ".";
 
-import { Button, Container, Form, Nav, NavDropdown, Navbar, Offcanvas, } from "react-bootstrap";
+import { Container, Nav, Navbar, Offcanvas, } from "react-bootstrap";
 
 import "./Navbar.css"
 
