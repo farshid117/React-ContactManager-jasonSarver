@@ -12,12 +12,12 @@ const Contacts = () => {
 
   return (
     <>
-      <h3 className='px-3 text-center' style={{ marginTop: 100 }}>سیستم مدیریت مخاطبین</h3>
-      <h6 className="text-center text-danger mt-2">با قابلیت جستجو😎</h6>
+      <h3 className='text-center' style={{ marginTop: 100 }}>سیستم مدیریت مخاطبین</h3>
+      <h6 className="text-center text-danger mt-3">با قابلیت جستجو😎</h6>
       <section id='contactsHeader'>
         <div className='container'>
           <div className='row'>
-            <div className='col d-flex justify-content-center justify-content-lg-start mt-2 mt-lg-3'>
+            <div className='col-12 d-flex justify-content-center justify-content-lg-start mt-2 mt-lg-3'>
               <p className='h3'>
                 {loading ? (
                   <button
@@ -53,10 +53,10 @@ const Contacts = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <section id='persons ' className='p-3 w-100'>
+        <section id='persons' className='w-100 mt-3'>
           <div className='container'>
-            <div className='row justify-content-evenly w-100 mx-0 '>
-              {/* todo put{} becouse we want to return something */}
+            <div className="row justify-content-evenly g-3">
+              {/* todo put{} becouse we want to return some js */}
               {
                 contacts
                   .filter((contact) => {
@@ -75,7 +75,7 @@ const Contacts = () => {
                   ))
               }
             </div>
-          </div> 
+          </div>
         </section>
       )}
     </>

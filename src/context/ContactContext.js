@@ -6,15 +6,17 @@ const ContactContext = createContext({
 
     contacts : [] ,
     setContacts : () => {} ,
+    
     searchParams:{},
 
    // errors : [] ,
   //  setErrors : () => {} ,
     groups : [] ,
 
+    createContact: () => {},
     deleteContact: () => {},
     updateContact: () => {},
-    createContact: () => {},
+
     onContactSearch: () => {},
     onSubmitSearch: () => {},
 })
