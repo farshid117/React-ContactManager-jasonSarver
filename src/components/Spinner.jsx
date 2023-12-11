@@ -6,7 +6,7 @@ const Spinner = () => {
              <div className="d-flex align-items-center justify-content-center mt-5">
                 <img src={spinnerGift} alt="loading...!" 
                      className=""
-                     style={{width : 200}}
+                     style={{width : 200, display:"block"}}
                 />
             </div> 
 
