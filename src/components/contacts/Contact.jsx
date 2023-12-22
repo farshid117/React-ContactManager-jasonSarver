@@ -22,7 +22,7 @@ const Contact = ({ id, fullname, photo, mobile, email, deleteContact }) => {
 
                 <div className="col-12 col-md-1 d-flex justify-content-center justify-content-md-start flex-md-column"  >
 
-                    <Link to={`/contacts/${id}`} className="btn m-1 px-3 d-inline-flex align-items-center justify-content-center w-25 " style={{ background: ORANGE }}><i className="fas fa-eyes" style={{ color: BACKGROUND, fontSize: 20 }}></i></Link>
+                    <Link to={`/contacts/${id}`} className="btn m-1 px-3 d-inline-flex align-items-center justify-content-center w-25 " style={{ background: ORANGE }}><i className="fas fa-eye" style={{ color: BACKGROUND, fontSize: 20 }}></i></Link>
                     <Link to={`/contacts/edit/${id}`} className="btn m-1 px-3 d-inline-flex align-items-center justify-content-center w-25 " style={{ background: CYAN }}><i className="fas fa-pen" style={{ color: BACKGROUND, fontSize: 20 }}></i></Link>
                     <button onClick={() => deleteContact(id, fullname)} className="btn m-1 px-3 d-inline-flex align-items-center justify-content-center w-25 " style={{ background: RED }}><i className="fas fa-trash" style={{ color: BACKGROUND, fontSize: 20 }}></i></button>
 
