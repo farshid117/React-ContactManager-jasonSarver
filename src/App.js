@@ -6,7 +6,6 @@ import {
   Navigate,
   useSearchParams,
 } from "react-router-dom";
-
 import _ from "lodash";
 import { confirmAlert } from "react-confirm-alert";
 import produce from "immer";
@@ -34,6 +33,7 @@ import {
   YELLOW,
   COMMENT,
 } from "./helpers/color";
+import NotFound from "./assets/no-found.gif"
 
 import "./App.css";
 
@@ -44,7 +44,7 @@ const App = () => {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams({});
-  
+
   //✍️ preparing useNavigate()
   const navigate = useNavigate();
   //todo: Maunt LifeCycle Hook & Connect To Server to get Data
@@ -116,35 +116,35 @@ const App = () => {
       customUI: ({ onClose }) => {
         return (
           <div
-              dir='rtl'
-              style={{
-                backgroundColor: CURRENTLINE,
-                border: `1px solid ${PURPLE}`,
-                borderRadius: "1em",
+            dir='rtl'
+            style={{
+              backgroundColor: CURRENTLINE,
+              border: `1px solid ${PURPLE}`,
+              borderRadius: "1em",
+            }}
+            className='p-4'
+          >
+            <h3 style={{ color: YELLOW }} className='text-center'>
+              پاک کردن مخاطب
+            </h3>
+            <p style={{ color: FOREGROUND }}>
+              مطمئنی میخواهی {`${contactFullname} `}را پاک کنی ؟
+            </p>
+            <button
+              onClick={() => {
+                removeContact(contactId);
+                onClose();
               }}
-              className='p-4'
-            >
-                <h3 style={{ color: YELLOW }} className='text-center'>
-                   پاک کردن مخاطب
-                </h3>
-                <p style={{ color: FOREGROUND }}>
-                   مطمئنی میخواهی {`${contactFullname} `}را پاک کنی ؟
-                </p>
-                <button
-                  onClick={() => {
-                    removeContact(contactId);
-                    onClose();
-                  }}
-                  className='btn me-2'
-                  style={{ backgroundColor: PURPLE, color: "#fff" }}>
-                  مطمئن هستم
-                </button>
-                <bottom
-                  onClick={onClose}
-                  className='btn'
-                  style={{ backgroundColor: COMMENT, color: "#fff" }}>
-                  انصراف
-                </bottom>
+              className='btn me-2'
+              style={{ backgroundColor: PURPLE, color: "#fff" }}>
+              مطمئن هستم
+            </button>
+            <bottom
+              onClick={onClose}
+              className='btn'
+              style={{ backgroundColor: COMMENT, color: "#fff" }}>
+              انصراف
+            </bottom>
           </div>
         );
       },
@@ -225,6 +225,14 @@ const App = () => {
           <Route path='/contacts/add' element={<AddContact />} />
           <Route path='/contacts/:contactId' element={<ViewContact />} />
           <Route path='/contacts/edit/:contactId' element={<EditContact />} />
+          <Route path='*' element=
+            {
+            <div className="text-center">
+              <h2 className="text-center mb-4" style={{ marginTop: 200 }}>گشتم نبود نگرد نیست</h2>
+              <img src={NotFound} width={390} height={300}  alt="not-found" />
+            </div>
+            }
+          /> 
         </Routes>
       </div>
     </ContactContext.Provider>
