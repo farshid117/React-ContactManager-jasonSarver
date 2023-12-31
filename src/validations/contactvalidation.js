@@ -12,7 +12,7 @@ export const contactSchema = yup.object().shape({
                 .email("آدرس ایمیل معتبر نیست")
                 .required("ایمیل الزامیست"),
     job : yup.string()
-             .nullable() , //? dont show error un below of <input> field
+             .nullable() , //? dont show empoty error below of <input> field
     group : yup.string()
                .required("انتخاب گروه الزامیست")
 })

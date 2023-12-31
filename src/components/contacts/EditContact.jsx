@@ -27,8 +27,8 @@ const EditContact = () => {
         const { data: contactData } = await getContact(contactId);
         console.log("contactData: ", contactData);
 
-        setLoading(false);
         setContact(contactData);
+        setLoading(false);
       } catch (err) {
         console.log(err);
         setLoading(false);
