@@ -4,6 +4,7 @@ import {
   Route,
   useNavigate,
   Navigate,
+  useLocation,
   useSearchParams,
 } from "react-router-dom";
 import _ from "lodash";
@@ -47,6 +48,9 @@ const App = () => {
 
   //✍️ preparing useNavigate()
   const navigate = useNavigate();
+  //✍️ preparing useLocation()
+  const location = useLocation();
+
   //todo: Maunt LifeCycle Hook & Connect To Server to get Data
   useEffect(() => {
     const fetchData = async () => {
@@ -218,7 +222,11 @@ const App = () => {
       }}>
       <div className='App'>
         <ToastContainer rtl={true} />
-        <NavbarContact />
+
+        {
+          location.pathname === "/contacts" ? (<NavbarContact />) : null 
+        }
+        
         <Routes>
           <Route path='/' element={<Navigate to='/contacts' />} /> {/*move to <contact /> without re-rendering  */}
           <Route path='/contacts' element={<Contacts />} />

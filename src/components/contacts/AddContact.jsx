@@ -2,16 +2,16 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import ContactContext from "../../context/ContactContext";
-import  {Formik,Form,Field,ErrorMessage} from "formik"
+import { Formik, Form, Field, ErrorMessage } from "formik"
 
-import  Spinner  from "../Spinner";
+import Spinner from "../Spinner";
 import { COMMENT, GREEN, PURPLE } from "../../helpers/color";
 import { contactSchema } from './../../validations/contactvalidation';
 
 
 const AddContact = () => {
-  const {loading, groups, createContact } = useContext(ContactContext)
- 
+  const { loading, groups, createContact } = useContext(ContactContext)
+
 
   return (
     <>
@@ -22,7 +22,7 @@ const AddContact = () => {
           <section className='p-3'>
             <div className='container'>
               <div className='row'>
-                <div className='col'>
+                <div className='col-12'>
                   <p
                     className='h4 fw-bold text-center'
                     style={{ color: GREEN }}>
@@ -31,7 +31,7 @@ const AddContact = () => {
                 </div>
               </div>
               <hr style={{ backgroundColor: GREEN }} />
-              <div className='row mt-5 position-relative'>
+              <div className='row align-items-center gy-5 mt-5 '>
                 <div className='col-md-6 col-lg-5 col-xl-4'>
                   <Formik
                     initialValues={{
@@ -140,12 +140,14 @@ const AddContact = () => {
                           className='form-select mb-3'>
                           <option selected>انتخاب گروه</option>
 
-                          {groups.length > 0 &&
+                          {
+                            groups.length > 0 &&
                             groups.map((group) => (
                               <option key={group.id} value={group.id}>
                                 {group.name}
                               </option>
-                            ))}
+                            ))
+                          }
                         </Field>
                         <ErrorMessage
                           name='group'
@@ -154,7 +156,7 @@ const AddContact = () => {
                           style={{ fontSize: 11 }}
                         />
                       </div>
-                      <div className='mx-2'>
+                      <div className='text-center'>
                         <input
                           type='submit'
                           className='btn'
@@ -172,15 +174,12 @@ const AddContact = () => {
                     </Form>
                   </Formik>
                 </div>
-                <div className='col-md-6 col-lg-5 col-xl-4'>
+                <div className='col-md-6 col-lg-5 col-xl-6 offset-xl-2'>
                   <img
                     src={require("../../assets/man-taking-note.png")}
                     height='400px'
+                    className="img-fluid"
                     style={{
-                      position: "absolute",
-                      zIndex: "-1",
-                      top: "-40px",
-                      left: 0,
                       opacity: "50%",
                     }}
                     alt='man-taking-note'

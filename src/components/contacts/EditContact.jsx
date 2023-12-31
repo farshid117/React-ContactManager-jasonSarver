@@ -3,13 +3,13 @@ import { useEffect, useState, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import {toast} from 'react-toastify'
+import produce from "immer";
 
 import ContactContext from "../../context/ContactContext";
 import { contactSchema } from "../../validations/contactvalidation";
 import { getContact, updateContact } from "../../services/contactService";
 import { Spinner } from "../";
 import { COMMENT, ORANGE, PURPLE, MYBLUE, CYAN } from "../../helpers/color";
-import produce from "immer";
 
 const EditContact = () => {
   const { contactId } = useParams();
@@ -87,10 +87,10 @@ const EditContact = () => {
         <Spinner />
       ) : (
         <>
-          <section className='p-3'>
+          <section className='mt-3'>
             <div className='container'>
-              <div className='row my-2'>
-                <div className='col text-center'>
+              <div className='row justify-content-center my-2'>
+                <div className='col-12 text-center'>
                   <p className='h4 fw-bold' style={{ color: CYAN }}>
                     ویرایش مخاطب
                   </p>
@@ -98,9 +98,9 @@ const EditContact = () => {
               </div>
               <hr style={{ backgroundColor: ORANGE }} />
               <div
-                className='row p-5 w-75  mx-auto align-items-start justify-content-start'
+                className='row p-3 p-md-5 align-items-center justify-content-center'
                 style={{ backgroundColor: MYBLUE, borderRadius: "1em" }}>
-                <div className='col-md-8'>
+                <div className='col-12 col-md-6'>
                   <Formik
                     initialValues={contact}
                     validationSchema={contactSchema}
@@ -213,7 +213,7 @@ const EditContact = () => {
                           )}
                         </ErrorMessage>
                       </div>
-                      <div className='mb-2'>
+                      <div className='mb-2 text-center'>
                         <input
                           type='submit'
                           className='btn'
@@ -230,23 +230,16 @@ const EditContact = () => {
                     </Form>
                   </Formik>
                 </div>
-                <div className='col-md-4'>
+                <div className='col-8 col-md-4 offset-md-2'>
                   <img
                     src={contact.photo}
                     className='img-fluid rounded'
                     style={{ border: `1px solid ${PURPLE}` }}
                     alt='contact'
+                    width={200}
                   />
                 </div>
               </div>
-            </div>
-
-            <div className='text-center mt-1'>
-              <img
-                src={require("../../assets/man-taking-note.png")}
-                style={{ opacity: "60%", height: 300 }}
-                alt='man-taking-note'
-              />
             </div>
           </section>
         </>
