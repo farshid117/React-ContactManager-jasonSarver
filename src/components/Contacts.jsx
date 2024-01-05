@@ -79,7 +79,7 @@ const Contacts = () => {
                       ))
                   ) : (
                     <>
-                      <div className="card  p-4 bg-primary m-4">
+                      <div className="card p-4 bg-primary m-4">
                         <div className="cord-body mx-auto">
                           <h2 className="text-white fw-bold text-center mb-3">هیچ مخاطبی در دیتا بیس یافت نشد</h2>
                           <img src={notFound} className="w-100 img-thumbnail rounded-3" alt="notFound" style={{ display: "block", width: "350px", height: 250 }} />
