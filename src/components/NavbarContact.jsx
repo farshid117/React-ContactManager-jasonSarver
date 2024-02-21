@@ -53,6 +53,7 @@ const NavbarContact = () => {
                 <Nav.Link href="#action2">درباره ما</Nav.Link>
                 <Nav.Link href="#action2">تماس با‌ما</Nav.Link>
               </Nav>
+              
               <span className='d-none d-lg-inline-block flex-grow-1 fw-bold' style={{ color: "#000" }}>
                 سیستم مدیریت{" "}
                 <span

@@ -12,6 +12,7 @@ import { confirmAlert } from "react-confirm-alert";
 import produce from "immer";
 import { ToastContainer, toast } from "react-toastify";
 
+import ContactContext from "./context/ContactContext";
 import {
   NavbarContact,
   Contacts,
@@ -19,7 +20,6 @@ import {
   ViewContact,
   EditContact,
 } from "./components";
-import ContactContext from "./context/ContactContext";
 import {
   getAllContacts,
   getAllGroups,
@@ -58,7 +58,7 @@ const App = () => {
         setLoading(true);
 
         const { data: contactsData } = await getAllContacts();
-        const { data: groupsData } = await getAllGroups(); //distructure
+        const { data: groupsData } = await getAllGroups(); //distructure & rename
 
         setContacts(contactsData);
         setGroups(groupsData);
@@ -71,7 +71,6 @@ const App = () => {
     };
     fetchData();
   }, []);
-
   //todo: Make createContactForm Fucntion
   const createContactForm = async (values) => {
     /* event.preventDefault() */ //for yup in the Formik automatic be perventdefault
@@ -154,7 +153,6 @@ const App = () => {
       },
     });
   };
-
   //todo: Make removeContact Function that invoke by confirmDelete fucntion
   const removeContact = async (contactId) => {
     try {
@@ -183,15 +181,16 @@ const App = () => {
       setLoading(false);
     }
   };
-  //todo: Make handelEvent Function --> onContactSearch & debounce of lodash
-  const onContactSearch = _.debounce((event) => {
+  //todo: Make EventHandler Function --> onChangeSearchInput & debounce of lodash
+  const onChangeSearchInput = _.debounce((event) => {
     let filter = event.target.value;
     if (filter) {
-      setSearchParams({ filter: filter });
+      setSearchParams({ filter: filter });  //?filter="..."
     } else {
       setSearchParams({});
     }
   }, 1000);
+  //todo: onSubmit Change
   const onSubmitSearch = (event) => {
     event.preventDefault()
     let filter = event.target.value;
@@ -218,15 +217,16 @@ const App = () => {
 
         deleteContact: reactConfirmAlert,
         createContact: createContactForm,
-        onContactSearch,
+        onChangeSearchInput,
       }}>
+
       <div className='App'>
         <ToastContainer rtl={true} />
 
         {
-          location.pathname === "/contacts" ? (<NavbarContact />) : null 
+          location.pathname === "/contacts" ? (<NavbarContact />) : null
         }
-        
+
         <Routes>
           <Route path='/' element={<Navigate to='/contacts' />} /> {/*move to <contact /> without re-rendering  */}
           <Route path='/contacts' element={<Contacts />} />
@@ -235,12 +235,12 @@ const App = () => {
           <Route path='/contacts/edit/:contactId' element={<EditContact />} />
           <Route path='*' element=
             {
-            <div className="text-center">
-              <h2 className="text-center mb-4" style={{ marginTop: 200 }}>گشتم نبود نگرد نیست</h2>
-              <img src={NotFound} width={390} height={300}  alt="not-found" />
-            </div>
+              <div className="text-center">
+                <h2 className="text-center mb-4" style={{ marginTop: 200 }}>گشتم نبود نگرد نیست</h2>
+                <img src={NotFound} width={390} height={300} alt="not-found" />
+              </div>
             }
-          /> 
+          />
         </Routes>
       </div>
     </ContactContext.Provider>

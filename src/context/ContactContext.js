@@ -1,23 +1,23 @@
-import {createContext} from "react"
+import { createContext } from "react"
 
 const ContactContext = createContext({
-    loading : false ,
-    setLoading : () =>{} ,
+  loading: false,
+  setLoading: () => { },
 
-    contacts : [] ,
-    setContacts : () => {} ,
-    
-    searchParams:{},
+  contacts: [],
+  setContacts: () => { },
 
-   // errors : [] ,
+  searchParams: {},
+
+  // errors : [] ,
   //  setErrors : () => {} ,
-    groups : [] ,
+  groups: [],
 
-    createContact: () => {},
-    deleteContact: () => {},
-    updateContact: () => {},
+  createContact: () => { },
+  deleteContact: () => { },
+  updateContact: () => { },
 
-    onContactSearch: () => {},
-    onSubmitSearch: () => {},
+  onChangeSearchInput: () => { },
+  onSubmitSearch: () => { },
 })
-export default ContactContext ;
+export default ContactContext;
