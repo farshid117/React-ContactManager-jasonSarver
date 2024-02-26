@@ -1,4 +1,4 @@
-import spinnerGift  from "../assets/Spinner.gif"
+import spinnerGift  from "../assets/Spinner.gif" /* import as a component */
 
 const Spinner = () => {
     return ( 
